@@ -6,27 +6,7 @@
     border-radius: 25px;
     box-sizing: border-box;
     background: #171314;
-    animation: glow 1.5s infinite alternate;
 }
-
-@keyframes glow {
-    from {
-        box-shadow:
-            0 0 10px -10px #fced49,
-            0 0 10px #ff9b0085
-            ;
-    }
-    to {
-        box-shadow:
-            0 0 10px 5px #fced49,
-            0 0 10px #ff9b0085
-            ;
-    }
-}
-
-
-
-/*#fc9749*/
 
 .card-background {
     z-index: 0;
@@ -188,10 +168,30 @@ p {
     flex-basis: 41px;
     height: 21px;
     position: relative;
-    bottom: 11px;
+    bottom: 15px;
     z-index: 2;
     background: lightgray;
-    background-image: url(../images/holofoil-texture-2.jpg);
+    background-image: url(https://image.ibb.co/jyq34n/holofoil_texture_2.jpg);
     box-shadow: 
         0 0 0 4px #171314;
+}
+
+
+.glowing{
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow:
+            0 0 10px -10px #fced49,
+            0 0 10px #ff9b0085
+            ;
+    }
+    to {
+        box-shadow:
+            0 0 10px 5px #fced49,
+            0 0 10px #ff9b0085
+            ;
+    }
 }

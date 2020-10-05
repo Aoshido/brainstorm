@@ -7,7 +7,7 @@
         <div class="row">
             {% for number in numbers %}
                 <div class="col-lg-4">
-                    {% include 'card.html.twig' with {'number': number} %}
+                    {% include 'card.html.twig' with {'number': number , 'card_number':  loop.index } %}
                 </div>
             {% endfor %}
         </div>
