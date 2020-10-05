@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block nav_link_draw %} active {% endblock nav_link_draw %}
+
+{% block body %}
+    <main role="main" class="container-fluid">
+        <div class="row">
+            {% for number in numbers %}
+                <div class="col-lg-4">
+                    {% include 'card.html.twig' with {'number': number} %}
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}
