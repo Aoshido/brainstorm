@@ -26,9 +26,8 @@
                 <div class="inner">
                     <a class="masthead-brand h3" style="text-decoration: none; " href="{{ path('homepage') }}">Brainstorm</a>
                     <nav class="nav nav-masthead justify-content-center">
-                        <a class="nav-link {% block nav_link_homepage %} {% endblock nav_link_homepage %}" href="{{ path('homepage') }}">Add</a>
                         <a class="nav-link {% block nav_link_draw %} {% endblock nav_link_draw %}" href="{{ path('draw') }}">Draw</a>
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link {% block nav_link_add %} {% endblock nav_link_add %}" href="{{ path('add') }}">Add</a>
                     </nav>
                 </div>
             </header>
