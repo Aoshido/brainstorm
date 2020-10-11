@@ -23,12 +23,18 @@ class HomepageController extends AbstractController {
      * @Route("/draw", name="draw")
      */
     public function draw() {
-        for ($i = 0; $i <= 2; $i++) {
-            $numbers[] = random_int(0, 100);
-        }
+        $ideas = $this->getDoctrine()->getManager()->getRepository('App:Idea')->findBy(
+                array(
+            'active' => true
+                ), array(
+                ), 100
+        );
 
+        shuffle($ideas);
+        $brainstorm = array_slice($ideas, 0, 3);
+        
         return $this->render('draw.html.twig', [
-                    'numbers' => $numbers,
+                    'brainstorm' => $brainstorm,
         ]);
     }
 

@@ -7,9 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=IdeaRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
-class Idea
-{
+class Idea {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -20,73 +21,90 @@ class Idea
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Title;
+    private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Description;
+    private $description;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $CreationDate;
+    private $creationDate;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $ModificationDate;
+    private $modificationDate;
 
-    public function getId(): ?int
-    {
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $active;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreationInformation() {
+        $this->active = true;
+        $this->creationDate = new \DateTime('now');
+        $this->modificationDate = new \DateTime('now');
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setLastModificationDate() {
+        $this->modificationDate = new \DateTime('now');
+    }
+
+    function getId() {
         return $this->id;
     }
 
-    public function getTitle(): ?string
-    {
-        return $this->Title;
+    function getTitle() {
+        return $this->title;
     }
 
-    public function setTitle(string $Title): self
-    {
-        $this->Title = $Title;
-
-        return $this;
+    function getDescription() {
+        return $this->description;
     }
 
-    public function getDescription(): ?string
-    {
-        return $this->Description;
+    function getCreationDate() {
+        return $this->creationDate;
     }
 
-    public function setDescription(string $Description): self
-    {
-        $this->Description = $Description;
-
-        return $this;
+    function getModificationDate() {
+        return $this->modificationDate;
     }
 
-    public function getCreationDate(): ?\DateTimeInterface
-    {
-        return $this->CreationDate;
+    function getActive() {
+        return $this->active;
     }
 
-    public function setCreationDate(\DateTimeInterface $CreationDate): self
-    {
-        $this->CreationDate = $CreationDate;
-
-        return $this;
+    function setId($id) {
+        $this->id = $id;
     }
 
-    public function getModificationDate(): ?\DateTimeInterface
-    {
-        return $this->ModificationDate;
+    function setTitle($title) {
+        $this->title = $title;
     }
 
-    public function setModificationDate(\DateTimeInterface $ModificationDate): self
-    {
-        $this->ModificationDate = $ModificationDate;
-
-        return $this;
+    function setDescription($description) {
+        $this->description = $description;
     }
+
+    function setCreationDate($creationDate) {
+        $this->creationDate = $creationDate;
+    }
+
+    function setModificationDate($modificationDate) {
+        $this->modificationDate = $modificationDate;
+    }
+
+    function setActive($active) {
+        $this->active = $active;
+    }
+
 }
