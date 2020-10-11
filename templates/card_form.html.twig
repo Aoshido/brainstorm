@@ -1,0 +1,52 @@
+<div class="card-container">
+    <div class="card-background">
+
+        <div class="card-frame">
+
+            <div class="frame-header">
+                <h1 class="name">{{idea.title}}</h1>
+                <i class="ms ms-u" id="mana-icon"></i>
+            </div>
+
+            <div class="frame-text-box">
+                <p class="description ftb-inner-margin">{{idea.description}}</p>
+            </div>
+
+            <div class="frame-bottom-info inner-margin">
+                <div class="fbi-left">
+                    <p>??/??</p>
+                </div>
+
+                <div class="fbi-center"></div>
+
+                <div class="fbi-right">
+                    username
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+                
+                
+                      {{ form_start(form) }}
+                    <div class="form-group row">
+                        {{ form_label(form.title,null,{ 'label-attr': {'class' : 'col-sm-2 col-form-label'} } ) }}
+                        <div class="col-sm-10">
+                            {{ form_widget(form.title, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        {{ form_label(form.description,null,{ 'label-attr': {'class' : 'col-sm-2 col-form-label'} } ) }}
+                        <div class="col-sm-10">
+                            {{ form_widget(form.description, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
