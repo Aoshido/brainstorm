@@ -7,10 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class AddController extends AbstractController {
+class IdeaController extends AbstractController {
 
     /**
-     * @Route("/add", name="add")
+     * @Route("/ideas/add", name="ideas_add")
      */
     public function add(Request $request) {
 
@@ -25,7 +25,7 @@ class AddController extends AbstractController {
             $entityManager->persist($idea);
             $entityManager->flush();
 
-            return $this->redirectToRoute('add');
+            return $this->redirectToRoute('ideas_add');
         }
 
         $ideas = $this->getDoctrine()->getManager()->getRepository('App:Idea')->findBy(array(
@@ -36,6 +36,19 @@ class AddController extends AbstractController {
                     'ideas' => $ideas,
                     'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/ideas/{id}/delete", name="ideas_delete")
+     */
+    public function delete(Request $request, $id) {
+
+        $idea = $this->getDoctrine()->getManager()->getRepository('App:Idea')->find($id);
+        $idea->setActive(false);
+        $this->getDoctrine()->getManager()->persist($idea);
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('ideas_add');
     }
 
 }

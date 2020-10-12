@@ -11,6 +11,8 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
         <link href="//cdn.jsdelivr.net/npm/mana-font@latest/css/mana.min.css" rel="stylesheet" type="text/css" />
+        
+        <script src="https://kit.fontawesome.com/6069278bed.js" crossorigin="anonymous"></script>
 
         <title>{% block title %}Welcome!{% endblock %}</title>
 
@@ -21,14 +23,14 @@
         {% endblock %}
     </head>
 
-    <body class="text-center">
+    <body class="{#text-center#}">
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
             <header class="masthead mb-auto">
                 <div class="inner">
                     <a class="masthead-brand h3" style="text-decoration: none; " href="{{ path('homepage') }}">Brainstorm</a>
                     <nav class="nav nav-masthead justify-content-center">
                         <a class="nav-link {% block nav_link_draw %} {% endblock nav_link_draw %}" href="{{ path('draw') }}">Draw</a>
-                        <a class="nav-link {% block nav_link_add %} {% endblock nav_link_add %}" href="{{ path('add') }}">Add</a>
+                        <a class="nav-link {% block nav_link_add %} {% endblock nav_link_add %}" href="{{ path('ideas_add') }}">Add</a>
                     </nav>
                 </div>
             </header>
