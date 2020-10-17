@@ -1,4 +1,4 @@
-<div class="card-container {% if card_number == 2 %} glowing {% endif %}">
+<div class="card-container {% if card_number == 2 %} glowing {% endif %} mb-3">
 
     <div class="card-background">
 
@@ -15,15 +15,14 @@
 
             <div class="frame-bottom-info inner-margin">
                 <div class="fbi-left">
-                    <p>{{idea.id}}/??</p>
-{#                    <p>OGW &#x2022; EN <!-- paintbrush symbol --> Wesley Burt</p>#}
+                    <p>{{idea.id}}/{{totalIdeas}}</p>
+                    <p>OGW &#x2022; EN <!-- paintbrush symbol --> {{ app.user.username }}</p>
                 </div>
 
                 <div class="fbi-center"></div>
 
                 <div class="fbi-right">
-                    username
-{#                    &#x99; &amp; &#169; 2016 Wizards of the Coast#}
+                    &#x99; &amp; &#169; 2016 Wizards of the Coast
                 </div>
             </div>
 

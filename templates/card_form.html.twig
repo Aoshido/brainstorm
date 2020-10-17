@@ -1,5 +1,6 @@
-<div class="card-container">
-    {{ form_start(form) }}
+<div class="card-container mb-3 glowing">
+    {{ form_start(form, { 'attr': {'autocomplete': 'off'} })  }}
+
     <div class="card-background">
 
         <div class="card-frame">
@@ -14,7 +15,16 @@
             <div class="frame-text-box">
                 {{ form_widget(form.description, { 'attr': {'class': 'form-transparent-background', 'placeholder' : 'Description' , 'maxlength' : 255 } }) }}
 
-                <div class="text-center">
+                {% if not form.vars.valid %}
+                    <div class="text-center" style="color:red">
+                        <p>
+                            {{ form_errors(form.title) }}
+                            {{ form_errors(form.description) }}
+                        </p>
+                    </div>
+                {% endif %}
+
+                <div class="text-center pt-5">
                     <button type="submit" class="btn btn-primary">Add</button>
                 </div>
             </div>
@@ -22,13 +32,14 @@
 
             <div class="frame-bottom-info inner-margin">
                 <div class="fbi-left">
-                    <p>??/??</p>
+                    <p>??/{{totalIdeas}}</p>
+                    <p>OGW &#x2022; EN <!-- paintbrush symbol --> {{ app.user.username }}</p>
                 </div>
 
                 <div class="fbi-center"></div>
 
                 <div class="fbi-right">
-                    username
+                    &#x99; &amp; &#169; 2016 Wizards of the Coast
                 </div>
             </div>
 

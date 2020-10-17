@@ -8,7 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-
 class IdeaController extends AbstractController {
 
     /**
@@ -16,6 +15,7 @@ class IdeaController extends AbstractController {
      * @IsGranted("ROLE_USER")
      */
     public function add(Request $request) {
+        $count = $this->getDoctrine()->getManager()->getRepository('App:Idea')->getIdeasCountForUser($this->getUser());
 
         // creates a task object and initializes some data for this example
         $idea = new \App\Entity\Idea();
@@ -39,19 +39,23 @@ class IdeaController extends AbstractController {
 
         return $this->render('add.html.twig', [
                     'ideas' => $ideas,
+                    'totalIdeas' => $count,
                     'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/ideas/{id}/delete", name="ideas_delete")
+     * @IsGranted("ROLE_USER")
      */
     public function delete(Request $request, $id) {
 
         $idea = $this->getDoctrine()->getManager()->getRepository('App:Idea')->find($id);
-        $idea->setActive(false);
-        $this->getDoctrine()->getManager()->persist($idea);
-        $this->getDoctrine()->getManager()->flush();
+        if ($idea->getUser() == $this->getUser()) {
+            $idea->setActive(false);
+            $this->getDoctrine()->getManager()->persist($idea);
+            $this->getDoctrine()->getManager()->flush();
+        }
 
         return $this->redirectToRoute('ideas_add');
     }
