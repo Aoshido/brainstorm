@@ -3,13 +3,11 @@
 {% block nav_link_draw %} active {% endblock nav_link_draw %}
 
 {% block body %}
-    <main role="main" class="container-fluid">
-        <div class="row">
-            {% for idea in brainstorm %}
-                <div class="col-lg-4">
-                    {% include 'card.html.twig' with {'idea': idea , 'card_number':  loop.index } %}
-                </div>
-            {% endfor %}
-        </div>
-    </main>
+    <div class="row">
+        {% for idea in brainstorm %}
+            <div class="col-lg-4">
+                {% include 'card.html.twig' with {'idea': idea , 'card_number':  loop.index } %}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

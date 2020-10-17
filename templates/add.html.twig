@@ -3,14 +3,14 @@
 {% block nav_link_add %} active {% endblock nav_link_add %}
 
 {% block body %}
-        <div class="row">
-            <div class="col-md-4">
-                {% include 'card_form.html.twig' with {'form': form } %}
-            </div>
-            <div class="col-md-8">
-                {% include 'card_table.html.twig' with {'ideas': ideas } %}
-                
-            </div>
+    <div class="row">
+        <div class="col-md-4">
+            {% include 'card_form.html.twig' with {'form': form } %}
         </div>
+        <div class="col-md-8">
+            {% include 'card_table.html.twig' with {'ideas': ideas } %}
+
+        </div>
+    </div>
 {% endblock %}
 
