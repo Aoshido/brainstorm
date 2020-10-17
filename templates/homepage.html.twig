@@ -6,5 +6,24 @@
     <main role="main" class="inner cover">
         <h1 class="cover-heading">Brainstorm</h1>
         <p class="lead">el pipo esta gordo</p>
+
+        <div class="card">
+            <div class="text-left"> <img src="https://i.imgur.com/k8jHuy2.png" width="200"> <br> <span class="abt">New Here? <a href="#">Create an account.</a></span> </div>
+            <div>
+                <div class="inputbox"> <span>Email</span> <input type="text" name="name" class="form-control" required="required"> </div>
+                <div class="inputbox">
+                    <div class="d-flex justify-content-between align-items-center"> <span>Phone</span> <a href="#">Forgot your password?</a> </div> <input type="text" name="name" class="form-control" required="required">
+                </div>
+            </div>
+            <div class="mt-2 proceed">
+                <div class="form-check mb-1"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> <label class="form-check-label" for="flexCheckDefault"> I have read and agree to the <a href="#">Terms of service</a> </label> </div> <button class="btn btn-primary btn-block"> Signin </button>
+            </div>
+            <div class="mt-2"> 
+                <a class="btn btn-outline-primary btn-block" href="{{path('connect_google')}}">
+                    <i class="fa fa-google"></i> Google
+                </a> 
+            </div>
+        </div>
+
     </main>
 {% endblock %}
