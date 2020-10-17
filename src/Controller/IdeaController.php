@@ -6,11 +6,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 class IdeaController extends AbstractController {
 
     /**
      * @Route("/ideas/add", name="ideas_add")
+     * @IsGranted("ROLE_USER")
      */
     public function add(Request $request) {
 
@@ -22,6 +25,7 @@ class IdeaController extends AbstractController {
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $idea->setUser($this->getUser());
             $entityManager->persist($idea);
             $entityManager->flush();
 
@@ -29,7 +33,8 @@ class IdeaController extends AbstractController {
         }
 
         $ideas = $this->getDoctrine()->getManager()->getRepository('App:Idea')->findBy(array(
-            'active' => true
+            'active' => true,
+            'user' => $this->getUser()
         ));
 
         return $this->render('add.html.twig', [

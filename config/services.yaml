@@ -29,3 +29,6 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    entry_point.user_login:
+        class: Service\LoginEntryPoint

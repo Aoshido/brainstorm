@@ -11,7 +11,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
         <link href="//cdn.jsdelivr.net/npm/mana-font@latest/css/mana.min.css" rel="stylesheet" type="text/css" />
-        
+
         <script src="https://kit.fontawesome.com/6069278bed.js" crossorigin="anonymous"></script>
 
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -30,13 +30,27 @@
                 <div class="inner">
                     <a class="masthead-brand h3" style="text-decoration: none; " href="{{ path('homepage') }}">Brainstorm</a>
                     <nav class="nav nav-masthead justify-content-center">
-                        <a class="nav-link {% block nav_link_draw %} {% endblock nav_link_draw %}" href="{{ path('draw') }}">Draw</a>
-                        <a class="nav-link {% block nav_link_add %} {% endblock nav_link_add %}" href="{{ path('ideas_add') }}">Add</a>
+                        {% if is_granted('ROLE_USER') %}
+                            <a class="nav-link {% block nav_link_draw %} {% endblock nav_link_draw %}" href="{{ path('draw') }}">Draw</a>
+                            <a class="nav-link {% block nav_link_add %} {% endblock nav_link_add %}" href="{{ path('ideas_add') }}">Add</a>
+                        {% else %}
+                            <a class="nav-link {% block nav_link_login %} {% endblock nav_link_login %}" href="{{ path('homepage') }}">Login</a>
+                        {% endif %}
                     </nav>
                 </div>
             </header>
 
             {% block body %}
+                
+                {% if app.session.flashbag.has('warning') %}
+                    {% for flashMessage in app.session.flashbag.get('warning') %}
+                        <div class="alert alert-warning">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ flashMessage }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
                 <main role="main" class="inner cover">
                     <h1 class="cover-heading">Cover your page.</h1>
                     <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
@@ -50,6 +64,8 @@
                 <div class="inner">
                     <p>Aoshido</p>
                     {#                    https://codeburst.io/make-a-magic-the-gathering-card-in-css-5e4e06a5e604#}
+                    {#                    https://dev.to/_mertsimsek/integrate-oauth2-for-symfony-4-360c#}
+                    {#                    https://stackoverflow.com/questions/17428987/what-is-the-best-way-to-notify-a-user-after-an-access-control-rule-redirects/17432089#answer-17432089#}
                 </div>
             </footer>
     </body>

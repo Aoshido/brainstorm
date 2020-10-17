@@ -38,6 +38,16 @@ class User implements UserInterface {
      */
     private $active;
 
+    /**
+     * One product has many features. This is the inverse side.
+     * @ORM\OneToMany(targetEntity="Idea", mappedBy="user")
+     */
+    private $ideas;
+
+    public function __construct() {
+        $this->ideas = new ArrayCollection();
+    }
+
     public function getId() {
         return $this->id;
     }
@@ -80,6 +90,14 @@ class User implements UserInterface {
         $this->active = $active;
 
         return $this;
+    }
+
+    function getIdeas() {
+        return $this->ideas;
+    }
+
+    function setIdeas($ideas) {
+        $this->ideas = $ideas;
     }
 
     /**

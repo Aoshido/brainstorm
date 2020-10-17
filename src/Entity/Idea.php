@@ -47,6 +47,13 @@ class Idea {
     private $modificationDate;
 
     /**
+     * Many ideas have one user. This is the owning side.
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="ideas")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     private $active;
@@ -113,6 +120,18 @@ class Idea {
 
     function setActive($active) {
         $this->active = $active;
+    }
+
+    /**
+     * 
+     * @return User
+     */
+    function getUser() {
+        return $this->user;
+    }
+
+    function setUser(User $user) {
+        $this->user = $user;
     }
 
 }

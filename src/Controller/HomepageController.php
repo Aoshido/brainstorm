@@ -25,14 +25,15 @@ class HomepageController extends AbstractController {
     public function draw() {
         $ideas = $this->getDoctrine()->getManager()->getRepository('App:Idea')->findBy(
                 array(
-            'active' => true
+            'active' => true,
+            'user' => $this->getUser()
                 ), array(
                 ), 100
         );
 
         shuffle($ideas);
         $brainstorm = array_slice($ideas, 0, 3);
-        
+
         return $this->render('draw.html.twig', [
                     'brainstorm' => $brainstorm,
         ]);
