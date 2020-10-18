@@ -13,11 +13,25 @@ class HomepageController extends AbstractController {
      * @Route("/", name="homepage")
      */
     public function homepage() {
-        $number = random_int(0, 100);
+        $flavors = [
+            "I reeled from the blow, and then suddenly, I knew exactly what to do. Within moments, victory was mine.",
+            "I see more than others do because I know where to look.",
+            "The mizzium-sphere array drove her mind deep into the thought field, where only the rarest motes of genius may be plucked.",
+            "I have a plan. Actually, I have three.",
+            "In all my years of research, I have yet to accurately quantify that baffling mental process known as ‘inspiration.'",
+        ];
+        shuffle($flavors);
 
-        return $this->render('homepage.html.twig', [
-                    'number' => $number,
+        return $this->render('homepage.html.twig',[
+            'flavor' => $flavors[0]
         ]);
+    }
+
+    /**
+     * @Route("/credits", name="credits")
+     */
+    public function credits() {
+        return $this->render('credits.html.twig');
     }
 
     /**

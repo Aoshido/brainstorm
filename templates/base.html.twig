@@ -14,23 +14,26 @@
 
         <script src="https://kit.fontawesome.com/6069278bed.js" crossorigin="anonymous"></script>
 
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Brainstorm{% endblock %}</title>
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('brainstorm.svg') }}" />
+
 
         {% block stylesheets %}
             <link href="{{ asset('cover.css') }}" rel="stylesheet"/>
             <link href="{{ asset('card.css') }}" rel="stylesheet"/>
             <link href="{{ asset('styles.css') }}" rel="stylesheet"/>
             <link href="{{ asset('login.css') }}" rel="stylesheet"/>
+            <link href="{{ asset('background.css') }}" rel="stylesheet"/>
         {% endblock %}
     </head>
 
     <body>
         {% include 'navbar.html.twig'%}
-        
+
         <div  class="container-fluid">
             {% block body %}
             {% endblock %}
         </div>
     </body>
-
 </html>

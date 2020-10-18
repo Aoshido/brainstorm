@@ -1,5 +1,8 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #313131;">
-    <a class="navbar-brand" href="{{path('homepage')}}">Brainstorm</a>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: rgba(0,0,0,0.5);">
+    <a class="navbar-brand" href="{{path('homepage')}}">
+        <img src="{{ asset('brainstorm.svg') }}" width="30" height="30" alt="">
+        Brainstorm
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -7,12 +10,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             {% if is_granted('ROLE_USER') %}
-                <a class="nav-link {% block nav_link_draw %} {% endblock nav_link_draw %}" href="{{ path('draw') }}">Draw</a>
                 <a class="nav-link {% block nav_link_add %} {% endblock nav_link_add %}" href="{{ path('ideas_add') }}">Add</a>
+                <a class="nav-link {% block nav_link_draw %} {% endblock nav_link_draw %}" href="{{ path('draw') }}">Draw</a>
             {% endif  %}
         </ul>
 
         <ul class="navbar-nav navbar-right">
+            <a class="nav-link {% block nav_link_credits %} {% endblock nav_link_credits %}" href="{{ path('credits') }}">Credits</a>
             {% if not is_granted('ROLE_USER') %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -22,11 +26,11 @@
                         <div class="row">
                             <div class="col-md-12">
                                 Login via
-                                <div class="social-buttons">
-                                    <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                                    <a href="{{path('connect_google')}}" class="btn btn-tw"><i class="fa fa-google"></i> Google</a>
+                                <div class="social-buttons text-center">
+                                    {#                                    <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>#}
+                                    <a href="{{path('connect_google')}}" class="btn btn-gl"><i class="fa fa-google"></i> Google</a>
                                 </div>
-                                or
+                                {#or
                                 <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
                                     <div class="form-group">
                                         <label class="sr-only" for="exampleInputEmail2">Email address</label>
@@ -49,9 +53,9 @@
                             </div>
                             <div class="bottom text-center col-md-12">
                                 New here ? <a href="#"><b>Join Us</b></a>
+                            </div>#}
                             </div>
                         </div>
-                    </div>
                 </li>
             {% else %}
                 <a class="nav-link" href="{{ logout_path(key = null) }}">Logout</a>

@@ -51,6 +51,11 @@ class IdeaController extends AbstractController {
     public function delete(Request $request, $id) {
 
         $idea = $this->getDoctrine()->getManager()->getRepository('App:Idea')->find($id);
+
+        if (is_null($idea)) {
+            return $this->redirectToRoute('ideas_add');
+        }
+
         if ($idea->getUser() == $this->getUser()) {
             $idea->setActive(false);
             $this->getDoctrine()->getManager()->persist($idea);

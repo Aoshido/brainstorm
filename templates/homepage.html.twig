@@ -3,8 +3,28 @@
 {% block nav_link_homepage %} active {% endblock nav_link_homepage %}
 
 {% block body %}
-    <main class="inner cover text-center">
-        <h1 class="cover-heading">Brainstorm</h1>
-        <p class="lead">el pipo esta gordo</p>
-    </main>
+    <div class="row h-100">
+        <div class="col-md-6 my-auto">
+            <h1>
+                <img src="{{ asset('brainstorm.svg') }}" width="100" height="100" alt="">
+                Brainstorm
+            </h1>
+                <p class="font-italic ml-5 pl-5">
+                    {{flavor}}
+                </p>
+        </div>
+        <div class="col-md-6 my-auto">
+            <ul>
+                <li>
+                    <p>Login with google!</p>
+                </li>
+                <li>
+                    <p>Add as many ideas as you want in <a href="{{path('ideas_add')}}">Add</a></p>
+                </li>
+                <li>
+                    <p>Get 3 of all your ideas at random in Draw!</p>
+                </li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}
