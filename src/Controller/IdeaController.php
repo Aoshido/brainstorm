@@ -8,13 +8,16 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+use Knp\Component\Pager\PaginatorInterface;
+
+
 class IdeaController extends AbstractController {
 
     /**
      * @Route("/ideas/add", name="ideas_add")
      * @IsGranted("ROLE_USER")
      */
-    public function add(Request $request) {
+    public function add(Request $request, PaginatorInterface $paginator) {
         $count = $this->getDoctrine()->getManager()->getRepository('App:Idea')->getIdeasCountForUser($this->getUser());
 
         // creates a task object and initializes some data for this example
@@ -37,8 +40,14 @@ class IdeaController extends AbstractController {
             'user' => $this->getUser()
         ));
 
+        $pagination = $paginator->paginate(
+                $ideas, 
+                $request->query->getInt('page', 1),
+                10 
+        );
+
         return $this->render('add.html.twig', [
-                    'ideas' => $ideas,
+                    'ideas' => $pagination,
                     'totalIdeas' => $count,
                     'form' => $form->createView(),
         ]);

@@ -2,6 +2,7 @@
     border: 1px solid black;
     width: auto;
     height: 600px;
+    min-width: 300px;
     margin: 0 auto;
     border-radius: 25px;
     box-sizing: border-box;
@@ -175,24 +176,4 @@ p {
     background-image: url(https://image.ibb.co/jyq34n/holofoil_texture_2.jpg);
     box-shadow: 
         0 0 0 4px #171314;
-}
-
-
-.glowing{
-    animation: glow 1.5s infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        box-shadow:
-            0 0 10px -10px #fced49,
-            0 0 10px #ff9b0085
-            ;
-    }
-    to {
-        box-shadow:
-            0 0 10px 5px #fced49,
-            0 0 10px #ff9b0085
-            ;
-    }
 }

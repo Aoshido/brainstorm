@@ -3,8 +3,8 @@
 {% block nav_link_homepage %} active {% endblock nav_link_homepage %}
 
 {% block body %}
-    <div class="row h-100">
-        <div class="col-md-6 my-auto">
+    <div class="row h-100 d-flex align-items-center homepage_text"> 
+        <div class="col-sm-6">
             <h1>
                 <img src="{{ asset('brainstorm.svg') }}" width="100" height="100" alt="">
                 Brainstorm
@@ -13,13 +13,13 @@
                     {{flavor}}
                 </p>
         </div>
-        <div class="col-md-6 my-auto">
+        <div class="col-sm-6">
             <ul>
                 <li>
                     <p>Login with google!</p>
                 </li>
                 <li>
-                    <p>Add as many ideas as you want in <a href="{{path('ideas_add')}}">Add</a></p>
+                    <p>Add as many ideas as you want</p>
                 </li>
                 <li>
                     <p>Get 3 of all your ideas at random in Draw!</p>

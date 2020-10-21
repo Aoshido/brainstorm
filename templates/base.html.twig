@@ -18,7 +18,6 @@
 
         <link rel="icon" type="image/x-icon" href="{{ asset('brainstorm.svg') }}" />
 
-
         {% block stylesheets %}
             <link href="{{ asset('cover.css') }}" rel="stylesheet"/>
             <link href="{{ asset('card.css') }}" rel="stylesheet"/>
@@ -28,12 +27,10 @@
         {% endblock %}
     </head>
 
-    <body>
+    <body class="container-fluid">
         {% include 'navbar.html.twig'%}
 
-        <div  class="container-fluid">
-            {% block body %}
-            {% endblock %}
-        </div>
+        {% block body %}
+        {% endblock %}
     </body>
 </html>

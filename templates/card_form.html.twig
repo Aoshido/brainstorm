@@ -13,7 +13,7 @@
             </div>
 
             <div class="frame-text-box">
-                {{ form_widget(form.description, { 'attr': {'class': 'form-transparent-background', 'placeholder' : 'Description' , 'maxlength' : 255 } }) }}
+                {{ form_widget(form.description, { 'attr': {'class': 'form-transparent-background form-height', 'placeholder' : 'Description' , 'maxlength' : 255 } }) }}
 
                 {% if not form.vars.valid %}
                     <div class="text-center" style="color:red">
@@ -33,7 +33,7 @@
             <div class="frame-bottom-info inner-margin">
                 <div class="fbi-left">
                     <p>??/{{totalIdeas}}</p>
-                    <p>OGW &#x2022; EN <!-- paintbrush symbol --> {{ app.user.username }}</p>
+                    <p>EN <!-- paintbrush symbol --> {{ app.user.username }}</p>
                 </div>
 
                 <div class="fbi-center"></div>

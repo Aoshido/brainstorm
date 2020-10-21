@@ -14,8 +14,10 @@ class IdeaType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('title', TextType::class)
-                ->add('description', TextareaType::class)
-//                ->add('description', DateType::class)
+                ->add('description', TextareaType::class, [
+                    'empty_data' => '',
+                    'required' => false,
+                ])
         ;
     }
 

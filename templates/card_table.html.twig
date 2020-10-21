@@ -1,34 +1,42 @@
-<table class="table table-sm  light-background" style="table-layout: fixed; word-wrap: break-word;">
+<table class="table table-sm light-background" style="word-wrap: break-word;">
     <thead>
-        <tr>
-            <th class="text-center" style="width: 5%">
+        <tr class="d-flex">
+{#            <th class="text-center" style="width: 5%">#}
+            <th class="text-center col-sm-1">
                 Nº
             </th>
-            <th style="width: 25%">
+{#            <th style="width: 25%">#}
+            <th class="col-sm-3">
                 Title
             </th>
-            <th style="width: 65%">
+{#            <th style="width: 65%">#}
+            <th class="col-sm-7">
                 Description
             </th>
-            <th class="text-center" style="width: 5%">
+{#            <th class="text-center" style="width: 5%">#}
+            <th class="col-sm-1">
                 &nbsp;
             </th>
         </tr>
     </thead>
     {% for idea in ideas %}
-        <tr>
-            <td class="text-center">
-                {{idea.id}}
+        <tr class="d-flex">
+            <td class="text-center col-sm-1">
+{#                {{idea.id}}#}
+                {{loop.index}}
             </td>
-            <td>
+            <td class="col-sm-3">
                 {{idea.title}}
             </td>
-            <td>
+            <td class="col-sm-7">
                 {{idea.description}}
             </td>
-            <td class="text-center">
+            <td class="text-center col-sm-1">
                 <a href="{{ path('ideas_delete', { 'id': idea.id }) }}" ><i class="fas fa-trash-alt"></i></a>
             </td>
         </tr>
     {% endfor %}
 </table>
+<div class="navigation">
+    {{ knp_pagination_render(ideas) }}
+</div>
