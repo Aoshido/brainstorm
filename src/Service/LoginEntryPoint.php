@@ -1,6 +1,6 @@
 <?php
 
-namespace Service;
+namespace App\Service;
 
 use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;

@@ -8,7 +8,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            entry_point: entry_point.user_login #or whatever you name your service
+            entry_point: entry_point.user_login
             anonymous: ~
             logout:
                 path: /logout
