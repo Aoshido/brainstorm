@@ -7,8 +7,10 @@
 {% block body %}
     <div class="row">
         {% for idea in brainstorm %}
-            <div class="col-lg-4">
-                {% include 'card.html.twig' with {'idea': idea , 'card_number':  loop.index } %}
+            <div class="col-md-4 pb-5">
+{#                <div style="max-width: 75%">#}
+                    {% include 'card.html.twig' with {'idea': idea , 'card_number':  loop.index } %}
+{#                </div>#}
             </div>
         {% endfor %}
     </div>
